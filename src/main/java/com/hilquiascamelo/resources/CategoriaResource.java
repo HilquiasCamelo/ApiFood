@@ -14,6 +14,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.hilquiascamelo.models.Categoria;
 import com.hilquiascamelo.services.CategoriaService;
 
+import io.swagger.annotations.ApiOperation;
+
 import java.net.URI;
 import java.util.List;
 
@@ -45,6 +47,7 @@ public class CategoriaResource {
 		return ResponseEntity.created(uri).build();
 	}
 
+	@ApiOperation(value = "Greets the world or Niteroi")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id) {
 		obj.setId(id);
