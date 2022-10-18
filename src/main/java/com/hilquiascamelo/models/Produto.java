@@ -1,13 +1,12 @@
 package com.hilquiascamelo.models;
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +18,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
 public class Produto implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -28,40 +26,34 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
+
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "PRODUTO_CATEGORIA",
-            joinColumns = @JoinColumn(name = "produto_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id")
-    )
+	@ManyToMany
+	@JoinTable(name = "PRODUTO_CATEGORIA",
+		joinColumns = @JoinColumn(name = "produto_id"),
+		inverseJoinColumns = @JoinColumn(name = "categoria_id")
+	)
     private List<Categoria> categorias = new ArrayList<>();
 
-    @Column(nullable = false, columnDefinition = "TEXT", length = 100)
     private String nome;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String preco;
+    private Double preco;
 
-    @Column(nullable = false, columnDefinition = "DATE")
     private Date dataFabricacao;
 
-    @Column(nullable = false, columnDefinition = "DATE")
     private Date validade;
 
-    @Column(nullable = false, columnDefinition = "NUMERIC")
     private long codigo;
 
-    @Column(nullable = true, columnDefinition = "NUMERIC")
     private double peso;
 
-    @Column(nullable = true, columnDefinition = "TEXT" ,length = 1000)
     private String descricao;
 
     public Produto() {
     }
 
 
-    public Produto(Integer id, String nome, String preco, Date dataFabricacao, Date validade, long codigo, double
+    public Produto(Integer id, String nome, Double preco, Date dataFabricacao, Date validade, long codigo, double
             peso, String descricao) {
         this.id = id;
         this.nome = nome;
@@ -105,11 +97,11 @@ public class Produto implements Serializable {
         this.nome = nome;
     }
 
-    public String getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 

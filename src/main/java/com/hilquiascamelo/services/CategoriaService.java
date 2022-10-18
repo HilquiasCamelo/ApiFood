@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.hilquiascamelo.dao.CategoriaRepository;
+import com.hilquiascamelo.dto.CategoriaDTO;
 import com.hilquiascamelo.models.Categoria;
 import com.hilquiascamelo.services.execeptions.DataIntegrityException;
 import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
@@ -50,5 +51,9 @@ public class CategoriaService {
 	}
 	private void updateData(Categoria newObj, Categoria obj) {
 		newObj.setNome(obj.getNome());
+	}
+
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 }
