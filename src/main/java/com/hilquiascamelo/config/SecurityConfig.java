@@ -37,22 +37,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String[] PUBLIC_MATCHERS_GET = {
 			"/produtos/**",
 			"/categorias/**",
-			"/estados/**"
+			"/estados/**",
+			"/products/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_POST = {
 			"/clientes/**",
 			"/auth/forgot/**",
-			"/categorias/**"
+			"/categorias/**",
+			"/products/**"
 	};
 	private static final String[] PUBLIC_MATCHERS_DELETE = {
-
+			"/products/**",
 			"/categorias/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_UPDATE = {
-
-			"/categorias/**"
+			"/products/**",
+			"/categorias/**",
+			"/user/**"
 	};
 
 	@Override
@@ -69,6 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				"/**.html", "/v2/api-docs/", "swagger-ui.html","/webjars/**", "/configuration/**", "swagger-resources/**",
 				"/swagger-resources/**",
 				"/swagger-ui.html",
+				"/user/**",
 				"/v2/api-docs",
 				"/webjars/**").permitAll()
 				.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
