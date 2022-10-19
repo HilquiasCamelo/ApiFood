@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.hilquiascamelo.dto.UserNewDTO;
-import com.hilquiascamelo.models.User;
+import com.hilquiascamelo.models.Users;
 import com.hilquiascamelo.services.UserService;
 
 import io.swagger.annotations.ApiOperation;
@@ -21,7 +21,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value="/user")
+@RequestMapping(value="/users")
 public class UserResource {
 
 	@Autowired
@@ -29,22 +29,22 @@ public class UserResource {
 
 	@ApiOperation(value = "Lists all registered user by id")
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<User> find(@PathVariable Integer id) {
-		User obj = service.find(id);
+	public ResponseEntity<Users> find(@PathVariable Integer id) {
+		Users obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
 	@ApiOperation(value = "Lists all registered user ")
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<User>> findAll() {
-		List<User> list = service.findAll();
+	public ResponseEntity<List<Users>> findAll() {
+		List<Users> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 
 	@ApiOperation(value = "Create new user")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@Validated @RequestBody UserNewDTO objDto) {
-	    User obj = service.fromDTO(objDto);
+	    Users obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -53,7 +53,7 @@ public class UserResource {
 
 	@ApiOperation(value = "Update registered user")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody User obj, @PathVariable Integer id) {
+	public ResponseEntity<Void> update(@RequestBody Users obj, @PathVariable Integer id) {
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();

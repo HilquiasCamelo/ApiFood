@@ -45,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/clientes/**",
 			"/auth/forgot/**",
 			"/categorias/**",
-			"/products/**"
+			"/products/**",
+			"/users/**"
 	};
 	private static final String[] PUBLIC_MATCHERS_DELETE = {
 			"/products/**",
@@ -55,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private static final String[] PUBLIC_MATCHERS_UPDATE = {
 			"/products/**",
 			"/categorias/**",
-			"/user/**"
+			"/users/**"
 	};
 
 	@Override

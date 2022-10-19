@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hilquiascamelo.models.enums.UserType;
 
 @Entity
-public class User implements Serializable {
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -29,10 +29,10 @@ public class User implements Serializable {
 
     private Integer tipo;
 
-    public User() {
+    public Users() {
     }
 
-    public User(Integer id, String nome, String senha, String email, UserType tipo) {
+    public Users(Integer id, String nome, String senha, String email, UserType tipo) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;

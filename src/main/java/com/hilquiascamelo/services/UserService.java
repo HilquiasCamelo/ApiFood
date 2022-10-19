@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import com.hilquiascamelo.dao.UserRepository;
 import com.hilquiascamelo.dto.UserNewDTO;
-import com.hilquiascamelo.models.User;
+import com.hilquiascamelo.models.Users;
 
 import com.hilquiascamelo.models.enums.UserType;
 import com.hilquiascamelo.services.execeptions.DataIntegrityException;
@@ -27,11 +27,11 @@ public class UserService {
 	private BCryptPasswordEncoder pe;
 	
 
-	public User find(Integer id) {
+	public Users find(Integer id) {
 		
-		Optional<User> obj = repo.findById(id);
+		Optional<Users> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! Id: " + id + ", Tipo: " + User.class.getName()));
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Users.class.getName()));
 	}
 	
 	public void delete(Integer id) {
@@ -44,23 +44,23 @@ public class UserService {
 		}
 	}
 	
-	public List<User> findAll() {
+	public List<Users> findAll() {
 		return repo.findAll();
 	}
 	
-    public User insert(User obj) {
+    public Users insert(Users obj) {
 		return repo.save(obj);
 	}
-	public User fromDTO(UserNewDTO objDto) {
-		return new User(null, objDto.getNome(), pe.encode(objDto.getSenha()), objDto.getEmail(), UserType.toEnum(objDto.getTipo()));
+	public Users fromDTO(UserNewDTO objDto) {
+		return new Users(null, objDto.getNome(), pe.encode(objDto.getSenha()), objDto.getEmail(), UserType.toEnum(objDto.getTipo()));
 	}	
-	public User update(User obj) {
-		User newObj = find(obj.getId());
+	public Users update(Users obj) {
+		Users newObj = find(obj.getId());
 		updateData(newObj, obj);
 		return repo.save(newObj);
 	}
 	
-	private void updateData(User newObj, User obj) {
+	private void updateData(Users newObj, Users obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
 		newObj.setSenha(pe.encode(obj.getSenha()));
