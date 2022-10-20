@@ -1,24 +1,27 @@
 package com.hilquiascamelo.models;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hilquiascamelo.models.enums.UserType;
 
+
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idUsers;
 
     private String nome;
 
@@ -33,7 +36,7 @@ public class Users implements Serializable {
     }
 
     public Users(Integer id, String nome, String senha, String email, UserType tipo) {
-        this.id = id;
+        this.idUsers = id;
         this.nome = nome;
         this.senha = senha;
         this.email = email;
@@ -41,11 +44,11 @@ public class Users implements Serializable {
     }
 
     public Integer getId() {
-        return id;
+        return idUsers;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idUsers = id;
     }
 
    

@@ -1,7 +1,10 @@
 package com.hilquiascamelo.services;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -56,21 +59,25 @@ public class BancoSeedService {
         Categoria categoria19 = new Categoria(null, "Carnes");
         Categoria categoria20 = new Categoria(null, "Lanches");
 
-        Produto produto = new Produto(null,"Napoli", 52.20,null, 
+        Produto produto = new Produto(null,"Napoli", 52.20,new Date(),
         null , 1, 500.00, "Pizza deliciosa" );
 
-        Produto produto1 = new Produto(null,"Calabresa", 52.20,null, 
+        Produto produto1 = new Produto(null,"Calabresa", 52.20, new Date(), 
         null , 1, 500.00, "Pizza deliciosa" );
+
+        Produto produto2 = new Produto(null,"Pastel de Calabresa com Queijo", 12.50, new Date(),
+                null , 1, 100.00, "Delicioso e muito rechado");
 
         Users users = new Users(null, "Hilquias", pe.encode("123"), "hilquiaswpc10@outlook.com", UserType.DIRETOR);
 
         produto1.getCategorias().add(categoria1);
         produto.getCategorias().add(categoria1);
+        produto2.getCategorias().add(categoria2);
         
         categoriaRepository.saveAll(Arrays.asList(categoria1,categoria2,categoria3, categoria4, categoria5, categoria6, categoria7,
         categoria8, categoria9, categoria10, categoria11, categoria12 ,categoria13, categoria14 , categoria15, categoria16, categoria17, categoria18, categoria19, categoria20));
 
-        produtoRepository.saveAll(Arrays.asList(produto, produto1));
+        produtoRepository.saveAll(Arrays.asList(produto, produto1, produto2));
 
         userRepository.saveAll(Arrays.asList(users));
 
