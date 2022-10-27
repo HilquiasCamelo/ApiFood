@@ -2,10 +2,10 @@ package com.hilquiascamelo.models.enums;
 
 public enum UserType {
 
-	USUARIO(1, ""),
-	FUNCIONARIO(2, ""),
-	GERENTE(3, ""),
-	DIRETOR(4, "");
+	USER(1, "USER_CLIENT"),
+	EMPLOYEE(2, "USER_EMPLOYEE"),
+	MANAGER(3, "USER_MANAGER"),
+	DIRECTOR(4, "USER_MANAGER");
 
 	private int cod;
 	private String descricao;

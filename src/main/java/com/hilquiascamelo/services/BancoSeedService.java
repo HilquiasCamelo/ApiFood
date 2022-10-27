@@ -16,6 +16,7 @@ import com.hilquiascamelo.dao.UserRepository;
 import com.hilquiascamelo.models.Categoria;
 import com.hilquiascamelo.models.Produto;
 import com.hilquiascamelo.models.Users;
+import com.hilquiascamelo.models.enums.Profile;
 import com.hilquiascamelo.models.enums.UserType;
 
 @Service
@@ -68,7 +69,11 @@ public class BancoSeedService {
         Produto produto2 = new Produto(null,"Pastel de Calabresa com Queijo", 12.50, new Date(),
                 null , 1, 100.00, "Delicioso e muito rechado");
 
-        Users users = new Users(null, "Hilquias", pe.encode("123"), "hilquiaswpc10@outlook.com", UserType.DIRETOR);
+        Users users = new Users(null, "Hilquias", pe.encode("123"), "hilquiaswpc10@outlook.com", UserType.DIRECTOR, true);
+        users.addProfile(Profile.USER);
+
+        Users users1 = new Users(null, "LinoRicado", pe.encode("123"), "hilquiaswp10@outlook.com", UserType.USER, true);
+        users.addProfile(Profile.ADMIN);
 
         produto1.getCategorias().add(categoria1);
         produto.getCategorias().add(categoria1);
@@ -79,7 +84,7 @@ public class BancoSeedService {
 
         produtoRepository.saveAll(Arrays.asList(produto, produto1, produto2));
 
-        userRepository.saveAll(Arrays.asList(users));
+        userRepository.saveAll(Arrays.asList(users, users1));
 
     }
 

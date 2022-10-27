@@ -8,7 +8,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Entity")
+@Table(name="employee")
 @PrimaryKeyJoinColumn(name="idUsers")
 public class Employee extends Users implements Serializable {
 

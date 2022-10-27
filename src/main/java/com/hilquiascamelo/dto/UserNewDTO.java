@@ -31,18 +31,22 @@ public class UserNewDTO implements Serializable {
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String numero;
 
+	@NotEmpty(message="Preenchimento obrigatório")
+	private Boolean situation;
+
 	public UserNewDTO() {
 	}
 
 	//Creating a constructor with arguments makes it easier to instantiate classes
 
-	public UserNewDTO(String nome, String email, Integer tipo, String senha, String logradouro, String numero) {
+	public UserNewDTO(String nome, String email, Integer tipo, String senha, String logradouro, String numero, Boolean situation) {
 		this.nome = nome;
 		this.email = email;
 		this.tipo = tipo;
 		this.senha = senha;
 		this.logradouro = logradouro;
 		this.numero = numero;
+		this.situation = situation;
 	}
 
 	public String getNome() {
@@ -91,6 +95,14 @@ public class UserNewDTO implements Serializable {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+	public Boolean getSituation() {
+		return situation;
+	}
+
+	public void setSituation(Boolean situation) {
+		this.situation = situation;
 	}
 
 	public boolean equals(Object object) {

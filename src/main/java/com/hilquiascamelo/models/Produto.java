@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -36,6 +37,7 @@ public class Produto implements Serializable {
 
     private Double preco;
 
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date dataFabricacao;
 
     private Date validade;

@@ -47,14 +47,14 @@ public class UserResource {
 	    Users obj = service.fromDTO(objDto);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+				.path("/{id}").buildAndExpand(obj.getIdUsers()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@ApiOperation(value = "Update registered user")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Users obj, @PathVariable Integer id) {
-		obj.setId(id);
+		obj.setIdUsers(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
