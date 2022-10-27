@@ -52,7 +52,7 @@ public class UserService {
 		return repo.save(obj);
 	}
 	public Users fromDTO(UserNewDTO objDto) {
-		return new Users(null, objDto.getNome(), pe.encode(objDto.getSenha()), objDto.getEmail(), UserType.toEnum(objDto.getTipo()), 
+		return new Users(null, objDto.getNome(), pe.encode(objDto.getPassword()), objDto.getEmail(), UserType.toEnum(objDto.getTipo()), 
 		objDto.getSituation() );
 	}	
 	public Users update(Users obj) {

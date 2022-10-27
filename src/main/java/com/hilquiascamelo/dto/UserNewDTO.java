@@ -23,7 +23,7 @@ public class UserNewDTO implements Serializable {
 	private Integer tipo;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
-	private String senha;
+	private String password;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String logradouro;
@@ -39,11 +39,11 @@ public class UserNewDTO implements Serializable {
 
 	//Creating a constructor with arguments makes it easier to instantiate classes
 
-	public UserNewDTO(String nome, String email, Integer tipo, String senha, String logradouro, String numero, Boolean situation) {
+	public UserNewDTO(String nome, String email, Integer tipo, String password, String logradouro, String numero, Boolean situation) {
 		this.nome = nome;
 		this.email = email;
 		this.tipo = tipo;
-		this.senha = senha;
+		this.password = password;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.situation = situation;
@@ -73,12 +73,12 @@ public class UserNewDTO implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getLogradouro() {
@@ -110,10 +110,10 @@ public class UserNewDTO implements Serializable {
 		if (!(object instanceof UserNewDTO)) return false;
 		if (!super.equals(object)) return false;
 		UserNewDTO that = (UserNewDTO) object;
-		return java.util.Objects.equals(nome, that.nome) && java.util.Objects.equals(email, that.email) && java.util.Objects.equals(tipo, that.tipo) && java.util.Objects.equals(senha, that.senha) && java.util.Objects.equals(logradouro, that.logradouro) && java.util.Objects.equals(numero, that.numero);
+		return java.util.Objects.equals(nome, that.nome) && java.util.Objects.equals(email, that.email) && java.util.Objects.equals(tipo, that.tipo) && java.util.Objects.equals(password, that.password) && java.util.Objects.equals(logradouro, that.logradouro) && java.util.Objects.equals(numero, that.numero);
 	}
 
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), nome, email, tipo, senha, logradouro, numero);
+		return Objects.hash(super.hashCode(), nome, email, tipo, password, logradouro, numero);
 	}
 }

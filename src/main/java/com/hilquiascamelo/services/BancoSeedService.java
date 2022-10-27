@@ -34,9 +34,6 @@ public class BancoSeedService {
     @Autowired
     private UserRepository userRepository;
 
-    /**
-     * @throws ParseException
-     */
     public void instantiateTestDatabase() throws ParseException {
 		
 		Categoria categoria1 = new Categoria(null, "Pizzas");
