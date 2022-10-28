@@ -25,7 +25,7 @@ public class JWTUtil {
 				.signWith(SignatureAlgorithm.HS512, secret.getBytes())
 				.compact();
 	}
-	
+	//Validating token
 	public boolean tokenValido(String token) {
 		Claims claims = getClaims(token);
 		if (claims != null) {

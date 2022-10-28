@@ -20,6 +20,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.hilquiascamelo.security.JWTAuthenticationFilter;
+import com.hilquiascamelo.security.JWTAuthorizationFilter;
 import com.hilquiascamelo.security.JWTUtil;
 
 @Configuration
@@ -37,8 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private JWTUtil jwtUtil;
 	
 	private static final String[] PUBLIC_MATCHERS = {
-			"/h2-console/**",
-			"/users/**"
+			"/h2-console/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_GET = {
@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	};
 
 	private static final String[] PUBLIC_MATCHERS_POST = {
-			"/clientes/**",
+			"/users/**",
 			"/auth/forgot/**"
 	};
 
@@ -66,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
 			.anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+		http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
