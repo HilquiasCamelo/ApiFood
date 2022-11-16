@@ -1,6 +1,8 @@
 package com.hilquiascamelo.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,8 +36,8 @@ public class ProdutoResource {
 
 	@ApiOperation(value = "Lists all registered product ")
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Produto>> findAll() {
-		List<Produto> list = service.findAll();
+	public ResponseEntity<Page<Produto>> findAll(Pageable pageable) {
+		Page<Produto> list = service.findAll(pageable);
 		return ResponseEntity.ok().body(list);
 	}
 

@@ -1,13 +1,15 @@
 package com.hilquiascamelo.services;
 
 import com.hilquiascamelo.dao.ProdutoRepository;
+import com.hilquiascamelo.interfaces.ProdutoServiceInterface;
 import com.hilquiascamelo.models.Produto;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.hilquiascamelo.services.execeptions.DataIntegrityException;
@@ -16,14 +18,14 @@ import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
 
 
 @Service
-public class ProdutoService implements com.hilquiascamelo.interfaces.ProdutoServiceInterface {
+public class ProdutoService implements ProdutoServiceInterface {
 
 	@Autowired
 	private ProdutoRepository repo;
 
 	@Override
-	public List<Produto> findAll() {
-		return repo.findAll();
+	public Page<Produto> findAll(Pageable pageable) {
+		return repo.findAll(pageable);
 	}
 	@Override
 	public Produto find(Integer id) {

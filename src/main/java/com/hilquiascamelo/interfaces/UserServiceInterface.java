@@ -2,6 +2,8 @@ package com.hilquiascamelo.interfaces;
 
 import com.hilquiascamelo.dto.UserNewDTO;
 import com.hilquiascamelo.models.Users;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -10,7 +12,7 @@ public interface UserServiceInterface {
 
     void delete(Integer id);
 
-    List<Users> findAll();
+    Page<Users> findAll(Pageable pageable);
 
     Users insert(Users obj);
 

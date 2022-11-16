@@ -1,11 +1,13 @@
 package com.hilquiascamelo.services;
 
+import com.hilquiascamelo.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.hilquiascamelo.dao.UserRepository;
@@ -18,7 +20,7 @@ import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
 
 
 @Service
-public class UserService implements com.hilquiascamelo.interfaces.UserServiceInterface {
+public class UserService implements UserServiceInterface {
     	
 	@Autowired
 	private UserRepository repo;
@@ -44,10 +46,11 @@ public class UserService implements com.hilquiascamelo.interfaces.UserServiceInt
 			throw new DataIntegrityException("Cannot delete because there are related users");
 		}
 	}
+
 	
 	@Override
-	public List<Users> findAll() {
-		return repo.findAll();
+	public Page<Users> findAll(Pageable pageable) {
+		return repo.findAll(pageable);
 	}
 	
     @Override
