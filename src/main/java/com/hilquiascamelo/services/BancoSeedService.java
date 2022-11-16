@@ -20,7 +20,7 @@ import com.hilquiascamelo.models.enums.Profile;
 import com.hilquiascamelo.models.enums.UserType;
 
 @Service
-public class BancoSeedService {
+public class BancoSeedService implements com.hilquiascamelo.interfaces.BancoSeedServiceInterface {
 
     @Autowired
 	private BCryptPasswordEncoder pe;
@@ -33,7 +33,7 @@ public class BancoSeedService {
 
     @Autowired
     private UserRepository userRepository;
-
+    @Override
     public void instantiateTestDatabase() throws ParseException {
 		
 		Categoria categoria1 = new Categoria(null, "Pizzas");

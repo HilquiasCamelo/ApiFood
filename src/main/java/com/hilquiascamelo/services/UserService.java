@@ -18,15 +18,15 @@ import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
 
 
 @Service
-public class UserService {
+public class UserService implements com.hilquiascamelo.interfaces.UserServiceInterface {
     	
 	@Autowired
 	private UserRepository repo;
 	
 	@Autowired
 	private BCryptPasswordEncoder pe;
-	
 
+	@Override
 	public Users find(Integer id) {
 		
 		Optional<Users> obj = repo.findById(id);
@@ -34,6 +34,7 @@ public class UserService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Users.class.getName()));
 	}
 	
+	@Override
 	public void delete(Integer id) {
 		find(id);
 		try {
@@ -44,17 +45,21 @@ public class UserService {
 		}
 	}
 	
+	@Override
 	public List<Users> findAll() {
 		return repo.findAll();
 	}
 	
-    public Users insert(Users obj) {
+    @Override
+	public Users insert(Users obj) {
 		return repo.save(obj);
 	}
+	@Override
 	public Users fromDTO(UserNewDTO objDto) {
 		return new Users(null, objDto.getNome(), pe.encode(objDto.getPassword()), objDto.getEmail(), UserType.toEnum(objDto.getTipo()), 
 		objDto.getSituation() );
 	}	
+	@Override
 	public Users update(Users obj) {
 		Users newObj = find(obj.getIdUsers());
 		updateData(newObj, obj);
