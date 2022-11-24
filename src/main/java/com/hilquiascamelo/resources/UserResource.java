@@ -32,15 +32,15 @@ public class UserResource {
 
 	@ApiOperation(value = "Lists all registered user by id")
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Page<Users>>findAll(Pageable pageable) {
-		Page<Users> list = service.findAll(pageable);
-		return ResponseEntity.ok().body(list);
+	public ResponseEntity<Users> find(@PathVariable Integer id) {
+		Users obj = service.find(id);
+		return ResponseEntity.ok().body(obj);
 	}
 
 	@ApiOperation(value = "Lists all registered user ")
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Users>> findAll() {
-		List<Users> list = service.findAll();
+	public ResponseEntity<Page<Users>>findAll(Pageable pageable) {
+		Page<Users> list = service.findAll(pageable);
 		return ResponseEntity.ok().body(list);
 	}
 
