@@ -1,6 +1,12 @@
 package com.hilquiascamelo.services;
 
+import com.hilquiascamelo.dao.UserRepository;
+import com.hilquiascamelo.dto.UserNewDTO;
 import com.hilquiascamelo.interfaces.UserServiceInterface;
+import com.hilquiascamelo.models.Users;
+import com.hilquiascamelo.models.enums.UserType;
+import com.hilquiascamelo.services.execeptions.DataIntegrityException;
+import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -9,14 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
-import com.hilquiascamelo.dao.UserRepository;
-import com.hilquiascamelo.dto.UserNewDTO;
-import com.hilquiascamelo.models.Users;
-
-import com.hilquiascamelo.models.enums.UserType;
-import com.hilquiascamelo.services.execeptions.DataIntegrityException;
-import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
 
 
 @Service
@@ -35,7 +33,7 @@ public class UserService implements UserServiceInterface {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Users.class.getName()));
 	}
-	
+
 	@Override
 	public void delete(Integer id) {
 		find(id);

@@ -1,9 +1,9 @@
 package com.hilquiascamelo.dto;
 
-import java.io.Serializable;
-
 import com.hilquiascamelo.models.Categoria;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.Serializable;
 
 public class CategoriaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;

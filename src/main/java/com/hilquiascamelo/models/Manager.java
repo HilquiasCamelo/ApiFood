@@ -1,14 +1,13 @@
 package com.hilquiascamelo.models;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name="manager")
@@ -22,6 +21,9 @@ public class Manager extends Users implements Serializable {
     @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date hiringDate;
     private Integer department;
+
+    public Manager() {
+    }
 
     public Manager(Double wage) {
         this.wage = wage;

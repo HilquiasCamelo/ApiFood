@@ -1,19 +1,18 @@
 package com.hilquiascamelo.services;
 
-import java.util.Optional;
-
+import com.hilquiascamelo.dao.CategoriaRepository;
+import com.hilquiascamelo.dto.CategoriaDTO;
 import com.hilquiascamelo.interfaces.CategoriaServiceInterface;
+import com.hilquiascamelo.models.Categoria;
+import com.hilquiascamelo.services.execeptions.DataIntegrityException;
+import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.hilquiascamelo.dao.CategoriaRepository;
-import com.hilquiascamelo.dto.CategoriaDTO;
-import com.hilquiascamelo.models.Categoria;
-import com.hilquiascamelo.services.execeptions.DataIntegrityException;
-import com.hilquiascamelo.services.execeptions.ObjectNotFoundException;
+import java.util.Optional;
 
 @Service
 public class CategoriaService implements CategoriaServiceInterface {

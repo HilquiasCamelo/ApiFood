@@ -1,11 +1,11 @@
 package com.hilquiascamelo.models;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name="employee")
@@ -52,4 +52,17 @@ public class Employee extends Users implements Serializable {
         this.department = department;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        if (!super.equals(o)) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(wage, employee.wage) && Objects.equals(hiringDate, employee.hiringDate) && Objects.equals(department, employee.department);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), wage, hiringDate, department);
+    }
 }

@@ -1,9 +1,10 @@
 package com.hilquiascamelo.dto;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.sql.Date;
-import javax.validation.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Length;
 
 public class ProdutoDTO implements Serializable {
 

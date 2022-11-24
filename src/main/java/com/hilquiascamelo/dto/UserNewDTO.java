@@ -1,12 +1,11 @@
 package com.hilquiascamelo.dto;
 
-import java.io.Serializable;
-import java.util.Objects;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
+import java.io.Serializable;
+import java.util.Objects;
 
 public class UserNewDTO implements Serializable {
 

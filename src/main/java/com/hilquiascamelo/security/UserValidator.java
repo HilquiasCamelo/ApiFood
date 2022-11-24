@@ -1,14 +1,13 @@
 package com.hilquiascamelo.security;
 
-import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
-
+import com.hilquiascamelo.models.enums.Profile;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.hilquiascamelo.models.enums.Profile;
+import java.util.Collection;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 
