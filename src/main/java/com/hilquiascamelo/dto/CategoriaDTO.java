@@ -3,6 +3,7 @@ package com.hilquiascamelo.dto;
 import java.io.Serializable;
 
 import com.hilquiascamelo.models.Categoria;
+import org.jetbrains.annotations.NotNull;
 
 public class CategoriaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -14,7 +15,7 @@ public class CategoriaDTO implements Serializable {
 	public CategoriaDTO() {
 	}
 	
-	public CategoriaDTO(Categoria obj) {
+	public CategoriaDTO(@NotNull Categoria obj) {
 		id = obj.getId();
 		nome = obj.getNome();
 	}
