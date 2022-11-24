@@ -29,4 +29,28 @@ class UserServiceTest {
     @Test
     void update() {
     }
+
+    @Test
+    void testFind() {
+    }
+
+    @Test
+    void testDelete() {
+    }
+
+    @Test
+    void testFindAll() {
+    }
+
+    @Test
+    void testInsert() {
+    }
+
+    @Test
+    void testFromDTO() {
+    }
+
+    @Test
+    void testUpdate() {
+    }
 }
