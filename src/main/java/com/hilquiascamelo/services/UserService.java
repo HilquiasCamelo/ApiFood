@@ -3,6 +3,7 @@ package com.hilquiascamelo.services;
 import com.hilquiascamelo.dao.UserRepository;
 import com.hilquiascamelo.dto.UserNewDTO;
 import com.hilquiascamelo.interfaces.UserServiceInterface;
+import com.hilquiascamelo.models.FoneUser;
 import com.hilquiascamelo.models.Users;
 import com.hilquiascamelo.models.enums.UserType;
 import com.hilquiascamelo.services.execeptions.DataIntegrityException;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -57,7 +60,11 @@ public class UserService implements UserServiceInterface {
 	}
 	@Override
 	public Users fromDTO(UserNewDTO objDto) {
-		return new Users(null, objDto.getNome(), pe.encode(objDto.getPassword()), objDto.getEmail(), UserType.toEnum(objDto.getTipo()), 
+		List<String> newArrayList = new ArrayList<>();
+		newArrayList.add("81 988799043");
+		newArrayList.add("81 988799043");
+
+		return new Users(null, objDto.getNome(), newArrayList,pe.encode(objDto.getPassword()), objDto.getEmail(), UserType.toEnum(objDto.getTipo()),
 		objDto.getSituation() );
 	}	
 	@Override

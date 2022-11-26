@@ -18,7 +18,6 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
-
     @JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA",

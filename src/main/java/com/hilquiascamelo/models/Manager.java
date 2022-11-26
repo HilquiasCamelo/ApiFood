@@ -17,7 +17,6 @@ public class Manager extends Users implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Double wage;
-
     @JsonFormat(pattern="dd/MM/yyyy HH:mm")
     private Date hiringDate;
     private Integer department;

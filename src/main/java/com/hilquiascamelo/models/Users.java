@@ -3,13 +3,15 @@ package com.hilquiascamelo.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hilquiascamelo.models.enums.Profile;
 import com.hilquiascamelo.models.enums.UserType;
+import jdk.dynalink.linker.LinkerServices;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.text.FieldPosition;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static java.util.Collections.addAll;
 
 
 @Entity
@@ -21,9 +23,11 @@ public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsers;
-
     private String name;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name="FONE_USER")
+    private List<String> foneUser = new ArrayList<String>();
     @JsonIgnore
     private String password;
 
@@ -33,7 +37,6 @@ public class Users implements Serializable {
 
     private boolean situation;
 
-    
      @ElementCollection(fetch = FetchType.EAGER)  
      @CollectionTable(name="PROFILE")
      private Set<Integer> profiles = new HashSet<>();
@@ -42,9 +45,10 @@ public class Users implements Serializable {
         addProfile(Profile.CLIENT);
     }
 
-    public Users(Integer idUsers, String name, String password, String email, UserType type, boolean situation) {
+    public Users(Integer idUsers, String name, List<String> foneUser, String password, String email, UserType type, boolean situation) {
         this.idUsers = idUsers;
         this.name = name;
+        this.foneUser = foneUser;
         this.password = password;
         this.email = email;
         this.type = (type == null) ? null : type.getCod();
@@ -106,6 +110,15 @@ public class Users implements Serializable {
 
     public void setSituation(boolean situation) {
         this.situation = situation;
+    }
+
+
+    public List<String> getFoneUser() {
+        return foneUser;
+    }
+
+    public void setFoneUser(List<String> foneUser) {
+        this.foneUser = foneUser;
     }
 
     public boolean equals(Object object) {
